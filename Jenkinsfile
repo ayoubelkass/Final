@@ -40,4 +40,7 @@ ls'''
     }
 
   }
+  environment {
+    InOrOut = 'ok'
+  }
 }
