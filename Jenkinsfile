@@ -11,6 +11,8 @@ cat CommitStat.txt'''
         writeFile(file: 'grepping.txt', text: 'b')
         sh '''set +e
 grep -E Code\\|Ship\\/Package CommitStat.txt > grepping.txt
+
+returnStatus: true
 '''
       }
     }
