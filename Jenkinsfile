@@ -10,7 +10,7 @@ pipeline {
 cat CommitStat.txt'''
         writeFile(file: 'grepping.txt', text: 'b')
         sh '''set +e
-rep -E Code\\|Ship\\/Package CommitStat.txt > grepping.txt
+grep -E Code\\|Ship\\/Package CommitStat.txt > grepping.txt
  cat grepping.txt | cut -d/ -f1 grepping.txt
 '''
       }
