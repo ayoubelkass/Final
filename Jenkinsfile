@@ -36,7 +36,7 @@ ls'''
     stage('Check&Run') {
       steps {
         echo 'this step should check if ship_package was changed and then run it'
-        echo "the content of the file is ${InOrOut}"
+        
       }
     }
 
