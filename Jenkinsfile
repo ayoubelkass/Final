@@ -5,12 +5,11 @@ pipeline {
       steps {
         echo 'This stage is to check which files were changed of the microservice'
         sh '''git show --stat > CommitStat.txt
- grep -E Code\\|Ship\\_Package CommitStat.txt > grepping.txt
+ grep -E Code\\|Ship_Package CommitStat.txt > grepping.txt
  cat grepping.txt | cut -d/ -f1 grepping.txt > unicity.txt
  uniq unicity.txt > FinalResult.txt
- var=$(cat FinalResult.txt)
- echo "le(s) dossier(s) impactés par un changement sont : 
- $var "  '''
+ echo "Les dossiers impactés par un changement sont : "
+ cat FinalResult.txt'''
       }
     }
 
