@@ -37,6 +37,7 @@ ls'''
       steps {
         echo 'this step should check if ship_package was changed and then run it'
         echo "my name is ${big}youb"
+        readFile 'FinalResult.txt'
       }
     }
 
