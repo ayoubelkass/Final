@@ -12,12 +12,13 @@ cat CommitStat.txt'''
         writeFile(file: 'unicity.txt', text: 'c')
         writeFile(file: 'FinalResult.txt', text: 'd')
         sh '''set +e
-grep -E Code\\|Ship\\/Package CommitStat.txt > grepping.txt
- cat grepping.txt | cut -d/ -f1 grepping.txt > unicity.txt
+grep -E Code\\|Ship\\_Package CommitStat.txt > grepping.txt
+cat grepping.txt
+cat grepping.txt | cut -d/ -f1 grepping.txt > unicity.txt
 '''
         sh '''uniq unicity.txt > FinalResult.txt
 
-echo "Les dossiers impactés par un changement sont : "
+echo "le(s) dossier(s) impactés par un changement sont :
  
 cat FinalResult.txt'''
       }
