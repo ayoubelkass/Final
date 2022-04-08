@@ -8,7 +8,8 @@ pipeline {
         sh '''git show --stat > CommitStat.txt
 '''
         writeFile(file: 'grepping.txt', text: 'b')
-        sh 'grep -E Code\\|Ship\\/Package CommitStat.txt > grepping.txt'
+        sh '''grep -E Code\\|Ship\\/Package CommitStat.txt > grepping.txt
+set +e'''
       }
     }
 
