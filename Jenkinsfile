@@ -9,7 +9,9 @@ pipeline {
 
 cat CommitStat.txt'''
         writeFile(file: 'grepping.txt', text: 'b')
-        sh '''grep -E Code\\|Ship\\/Package CommitStat.txt 
+        sh '''grep -E Code CommitStat.txt 
+
+
 
 
 '''
