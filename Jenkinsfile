@@ -28,6 +28,8 @@ cat FinalResult.txt'''
     stage('Running Code') {
       steps {
         echo 'The folder code should always be on the run '
+        sh '''cd Code 
+ls'''
       }
     }
 
