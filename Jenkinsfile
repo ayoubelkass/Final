@@ -22,6 +22,8 @@ cat grepping.txt | cut -d/ -f1 grepping.txt > unicity.txt
 echo "le dossier ou les dossiers impactes par un changement sont :"
  
 cat FinalResult.txt'''
+        sh '''git fetch https://github.com/ayoubelkass/Final.git
+git pull https://github.com/ayoubelkass/Final.git'''
       }
     }
 
