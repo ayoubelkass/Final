@@ -4,6 +4,8 @@ pipeline {
     stage('Changed Files Check') {
       steps {
         echo 'This stage is to check which files were changed of the microservice'
+        sh '''git fetch https://github.com/ayoubelkass/Final.git
+git pull https://github.com/ayoubelkass/Final.git'''
         writeFile(file: 'CommitStat.txt', text: 'a')
         writeFile(file: 'grepping.txt', text: 'b')
         writeFile(file: 'unicity.txt', text: 'c')
@@ -22,8 +24,6 @@ cat grepping.txt | cut -d/ -f1 grepping.txt > unicity.txt
 echo "le dossier ou les dossiers impactes par un changement sont :"
  
 cat FinalResult.txt'''
-        sh '''git fetch https://github.com/ayoubelkass/Final.git
-git pull https://github.com/ayoubelkass/Final.git'''
       }
     }
 
