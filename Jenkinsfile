@@ -6,7 +6,8 @@ pipeline {
         echo 'This stage is to check which files were changed of the microservice'
         writeFile(file: 'CommitStat.txt', text: 'a')
         sh '''git show --stat > CommitStat.txt
-'''
+
+cat CommitStat.txt'''
         writeFile(file: 'grepping.txt', text: 'b')
         sh '''grep -E Code\\|Ship\\/Package CommitStat.txt > grepping.txt
 set +e'''
