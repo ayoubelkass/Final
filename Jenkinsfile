@@ -9,6 +9,7 @@ pipeline {
 '''
         writeFile(file: 'grepping.txt', text: 'b')
         sh '''grep -E Code\\|Ship\\_Package CommitStat.txt > grepping.txt
+
 cat grepping.txt'''
       }
     }
