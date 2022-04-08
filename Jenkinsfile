@@ -13,7 +13,7 @@ pipeline {
       }
     }
 
-    stage('') {
+    stage('Check&Run') {
       steps {
         echo 'this step should check if ship_package was changed and then run it'
       }
