@@ -36,12 +36,13 @@ ls'''
     stage('Check&Run') {
       steps {
         echo 'this step should check if ship_package was changed and then run it'
-        readFile 'FinalResult.txt'
+        echo "the content of the file is ${InOrOut}"
       }
     }
 
   }
   environment {
-    InOrOut = 'ok'
+    InOrOut = readFile('FinalResult.txt').trim()
+    
   }
 }
