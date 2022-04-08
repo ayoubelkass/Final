@@ -18,7 +18,7 @@ cat grepping.txt | cut -d/ -f1 grepping.txt > unicity.txt
 '''
         sh '''uniq unicity.txt > FinalResult.txt
 
-echo "le(s) dossier(s) impactés par un changement sont :
+echo "le(s) dossier(s) impactes par un changement sont :
  
 cat FinalResult.txt'''
       }
