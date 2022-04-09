@@ -36,15 +36,17 @@ ls'''
     stage('Check&Run') {
       environment {
         big = 'a'
+        variable = 'b'
       }
       steps {
         echo 'this step should check if ship_package was changed and then run it'
         echo "my name is ${big}youb"
         readFile 'FinalResult.txt'
         writeFile(file: 'game.txt', text: 'z')
-        sh '''cat FinalResult.txt > game.txt
+        sh '''cat FinalResult.txt > game.txt'''
+        variable=$(cat game.txt)
+        echo "dossier :  ${variable}"
 
-cat game.txt'''
       }
     }
 
