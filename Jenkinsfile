@@ -5,6 +5,7 @@ pipeline {
       steps {
         echo 'This stage is to check which files were changed of the microservice'
         writeFile(file: 'FinalResult.txt', text: 'd')
+        writeFile(file: 'arc.txt', text: 'a')
         sh '''git show --stat > FinalResult.txt
 
 cat FinalResult.txt'''
@@ -14,11 +15,11 @@ grep -E Code\\|Ship\\_Package FinalResult.txt > FinalResult.txt
 
 cat FinalResult.txt | cut -d/ -f1 FinalResult.txt > FinalResult.txt
 '''
-        sh '''uniq FinalResult.txt > FinalResult.txt
+        sh '''uniq FinalResult.txt > arc.txt
 
 echo "le dossier ou les dossiers impactes par un changement sont :"
  
-cat FinalResult.txt'''
+cat arc.txt'''
       }
     }
 
