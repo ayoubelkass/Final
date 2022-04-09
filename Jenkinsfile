@@ -42,10 +42,9 @@ ls'''
         echo 'this step should check if ship_package was changed and then run it'
         echo "my name is ${big}youb"
         readFile 'FinalResult.txt'
-        writeFile(file: 'game.txt', text: 'z')
-        sh '''cat FinalResult.txt > game.txt'''
+        
         script {
-        variable=readFile('game.txt').trim()
+        variable=readFile('FinalResult.txt').trim()
         }
         echo "dossier :  ${variable}"
       }
