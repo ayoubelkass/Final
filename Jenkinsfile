@@ -44,9 +44,10 @@ ls'''
         readFile 'FinalResult.txt'
         writeFile(file: 'game.txt', text: 'z')
         sh '''cat FinalResult.txt > game.txt'''
-        variable=$(cat game.txt)
+        script {
+        variable=readFile('game.txt').trim()
+        }
         echo "dossier :  ${variable}"
-
       }
     }
 
