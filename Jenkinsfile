@@ -37,12 +37,12 @@ ls'''
       }
       steps {
         echo 'this step should check if ship_package was changed and then run it'
-        readFile 'FinalResult.txt'
+        readFile 'arc.txt'
         script {
-          variable=readFile('FinalResult.txt').trim()
+          variable=readFile('arc.txt').trim()
         }
 
-        echo "dossier :  ${variable}"
+        echo "dossiers :  ${variable}"
       }
     }
 
