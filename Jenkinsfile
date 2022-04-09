@@ -13,17 +13,17 @@ pipeline {
 cat CommitStat.txt'''
         sh '''set +e
 
-grep -E Code\\|Ship\\_Package CommitStat.txt > CommitStat.txt
+grep -E Code\\|Ship\\_Package CommitStat.txt > grepping.txt
 
-cat CommitStat.txt
+cat grepping.txt
 
-cut -d/ -f1 CommitStat.txt > unicity.txt
+cut -d/ -f1 grepping.txt > unicity.txt
 '''
-        sh '''uniq unicity.txt > CommitStat.txt
+        sh '''uniq unicity.txt > FinalResult.txt
 
 echo "le dossier ou les dossiers impactes par un changement sont :"
  
-cat CommitStat.txt'''
+cat FinalResult.txt'''
       }
     }
 
@@ -41,9 +41,9 @@ ls'''
       }
       steps {
         echo 'this step should check if ship_package was changed and then run it'
-        readFile 'CommitStat.txt'
+        readFile 'FinalResult.txt'
         script {
-          variable=readFile('CommitStat.txt').trim()
+          variable=readFile('FinalResult.txt').trim()
         }
 
         echo "dossier :  ${variable}"
