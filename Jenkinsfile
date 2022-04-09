@@ -4,20 +4,17 @@ pipeline {
     stage('Changed Files Check') {
       steps {
         echo 'This stage is to check which files were changed of the microservice'
-        writeFile(file: 'CommitStat.txt', text: 'a')
-        writeFile(file: 'grepping.txt', text: 'b')
-        writeFile(file: 'unicity.txt', text: 'c')
         writeFile(file: 'FinalResult.txt', text: 'd')
-        sh '''git show --stat > CommitStat.txt
+        sh '''git show --stat > FinalResult.txt
 
-cat CommitStat.txt'''
+cat FinalResult.txt'''
         sh '''set +e
 
-grep -E Code\\|Ship\\_Package CommitStat.txt > grepping.txt
+grep -E Code\\|Ship\\_Package FinalResult.txt > FinalResult.txt
 
-cat grepping.txt | cut -d/ -f1 grepping.txt > unicity.txt
+cat FinalResult.txt | cut -d/ -f1 FinalResult.txt > FinalResult.txt
 '''
-        sh '''uniq unicity.txt > FinalResult.txt
+        sh '''uniq FinalResult.txt > FinalResult.txt
 
 echo "le dossier ou les dossiers impactes par un changement sont :"
  
@@ -41,8 +38,9 @@ ls'''
         echo 'this step should check if ship_package was changed and then run it'
         readFile 'FinalResult.txt'
         script {
-        variable=readFile('FinalResult.txt').trim()
+          variable=readFile('FinalResult.txt').trim()
         }
+
         echo "dossier :  ${variable}"
       }
     }
