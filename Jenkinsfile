@@ -15,8 +15,6 @@ cat CommitStat.txt'''
 
 grep -E Code\\|Ship\\_Package CommitStat.txt > grepping.txt
 
-cat grepping.txt
-
 cut -d/ -f1 grepping.txt > unicity.txt
 '''
         sh '''uniq unicity.txt > FinalResult.txt
