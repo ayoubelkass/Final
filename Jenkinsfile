@@ -13,16 +13,11 @@ stages {
 
 cat CommitStat.txt'''
         sh '''set +e
-
-grep -E Code\\|Ship\\_Package CommitStat.txt > grepping.txt
-
-cut -d/ -f1 grepping.txt > unicity.txt
-'''
+              grep -E Code\\|Ship\\_Package CommitStat.txt > grepping.txt
+              cut -d/ -f1 grepping.txt > unicity.txt'''
         sh '''uniq unicity.txt > FinalResult.txt
-
-echo "le dossier ou les dossiers impactes par un changement sont :"
- 
-cat FinalResult.txt'''
+              echo "le dossier ou les dossiers impactes par un changement sont :"
+              cat FinalResult.txt'''
       }
     }
 
@@ -30,7 +25,7 @@ cat FinalResult.txt'''
       steps {
         echo 'The folder code should always be on the run '
         sh '''cd Code 
-ls'''
+              ls'''
       }
     }
 
