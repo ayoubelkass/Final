@@ -1,6 +1,7 @@
 pipeline {
   agent any
-  stages {
+
+stages {
     stage('Changed Files Check') {
       steps {
         echo 'This stage is to check which files were changed of the microservice'
@@ -44,7 +45,14 @@ ls'''
           variable=readFile('FinalResult.txt').trim()
         }
 
-        echo "dossier :  ${variable}"
+         script {
+          if (env.variable.contains('Ship')){
+             echo "dossier :  ${variable}"
+          } else {echo"this is bullshit"
+          }
+        }
+
+       
       }
     }
 
