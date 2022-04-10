@@ -39,7 +39,7 @@ ls'''
       }
       steps {
         echo 'this step should check if ship_package was changed and then run it'
-        readFile 'FinalResult.txt'
+        
         script {
           variable=readFile('FinalResult.txt').trim()
         }
