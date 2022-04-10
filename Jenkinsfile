@@ -40,15 +40,11 @@ ls'''
     expression { return readFile('FinalResult.txt').contains('Ship') }
 }
       environment {
-        variable = 'b'
+        variable = 'The running of ship/package has happened'
       }
       steps {
-      
-      script {
-          variable=readFile('FinalResult.txt').trim()
-        }
 
-       echo "dossier :  ${variable}"
+       echo "${variable}"
       }
     }
 
