@@ -34,25 +34,21 @@ ls'''
       }
     }
 
+
     stage('Check&Run') {
+           when {
+    expression { return readFile('FinalResult.txt').contains('Ship') }
+}
       environment {
         variable = 'b'
       }
       steps {
-        echo 'this step should check if ship_package was changed and then run it'
-        
-        script {
+      
+      script {
           variable=readFile('FinalResult.txt').trim()
         }
 
-         script {
-          if (env.variable.contains('Ship')){
-             echo "dossier :  ${variable}"
-          } else {echo"this is bullshit"
-          }
-        }
-
-       
+       echo "dossier :  ${variable}"
       }
     }
 
