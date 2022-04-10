@@ -5,24 +5,19 @@ stages {
     stage('Changed Files Check') {
       steps {
         echo 'This stage is to check which files were changed of the microservice'
-        writeFile(file: 'CommitStat.txt', text: 'a')
-        writeFile(file: 'grepping.txt', text: 'b')
-        writeFile(file: 'unicity.txt', text: 'c')
+
         writeFile(file: 'FinalResult.txt', text: 'd')
-        sh '''git show --stat > CommitStat.txt
-
-cat CommitStat.txt'''
+        
+        sh '''git show --stat > FinalResult.txt
+              cat FinalResult.txt'''
+        
         sh '''set +e
-
-grep -E Code\\|Ship\\_Package CommitStat.txt > grepping.txt
-
-cut -d/ -f1 grepping.txt > unicity.txt
-'''
-        sh '''uniq unicity.txt > FinalResult.txt
-
-echo "le dossier ou les dossiers impactes par un changement sont :"
- 
-cat FinalResult.txt'''
+              echo $(cat FinalResult.txt \\| grep -E Code\\|Ship\\_Package FinalResult.txt) > FinalResult.txt
+              echo $(cat FinalResult.txt \\| cut -d/ -f1 FinalResult.txt) > FinalResult.txt'''
+        
+        sh '''echo $(cat FinalResult.txt \\| uniq FinalResult.txt) > FinalResult.txt
+              echo "le dossier ou les dossiers impactes par un changement sont :"
+              cat FinalResult.txt'''
       }
     }
 
@@ -30,7 +25,7 @@ cat FinalResult.txt'''
       steps {
         echo 'The folder code should always be on the run '
         sh '''cd Code 
-ls'''
+              ls'''
       }
     }
 
