@@ -4,7 +4,8 @@ pipeline {
 stages {
     stage('Changed Files Check') {
       steps {
-        echo 'This stage is to check which files were changed of the microservice'
+
+    //This stage is to check which folders of the microservice were changed
         writeFile(file: 'CommitStat.txt', text: 'a')
         writeFile(file: 'grepping.txt', text: 'b')
         writeFile(file: 'unicity.txt', text: 'c')
@@ -22,7 +23,8 @@ stages {
 
     stage('Running Code') {
       steps {
-        echo 'The folder code should always be on the run '
+        
+    //The folder code should always be on the run
         sh '''cd Code 
               ls'''
       }
@@ -30,6 +32,8 @@ stages {
 
 
     stage('Check&Run') {
+      
+      //if Ship_package is modified then this stage should be on the run 
            when {
     expression { return readFile('FinalResult.txt').contains('Ship') }
 }
