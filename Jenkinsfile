@@ -10,8 +10,7 @@ stages {
         writeFile(file: 'unicity.txt', text: 'c')
         writeFile(file: 'FinalResult.txt', text: 'd')
         sh '''git show --stat > CommitStat.txt
-
-cat CommitStat.txt'''
+              cat CommitStat.txt'''
         sh '''set +e
               grep -E Code\\|Ship\\_Package CommitStat.txt > grepping.txt
               cut -d/ -f1 grepping.txt > unicity.txt'''
