@@ -26,10 +26,9 @@ pipeline {
     }
 
     stage('Push Docker image to Docker registry') {
-       when {
-          branch 'main'
-        }
-      
+      when {
+        branch 'main'
+      }
       steps {
         sh '''cd Ship_Package 
               ls'''
@@ -48,6 +47,12 @@ pipeline {
       }
       steps {
         echo "${variable}"
+      }
+    }
+
+    stage('pre-merge(PR checker)') {
+      steps {
+        echo 'hey there'
       }
     }
 
