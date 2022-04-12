@@ -1,11 +1,8 @@
 pipeline {
   agent any
-
-stages {
+  stages {
     stage('Changed Files Check') {
       steps {
-
-    //This stage is to check which folders of the microservice were changed
         writeFile(file: 'CommitStat.txt', text: 'a')
         writeFile(file: 'grepping.txt', text: 'b')
         writeFile(file: 'unicity.txt', text: 'c')
@@ -22,27 +19,35 @@ stages {
     }
 
     stage('Running Code') {
-      steps {
-        
-    //The folder code should always be on the run
-        sh '''cd Code 
+      parallel {
+        stage('Running Code') {
+          steps {
+            sh '''cd Code 
               ls'''
+          }
+        }
+
+        stage('Push Docker image to Docker registry') {
+          steps {
+            echo 'Hello there .. !!'
+          }
+        }
+
       }
     }
 
-
     stage('Check&Run') {
-      
-      //if Ship_package is modified then this stage should be on the run 
-           when {
-    expression { return readFile('FinalResult.txt').contains('Ship') }
-}
+      when {
+        expression {
+          return readFile('FinalResult.txt').contains('Ship')
+        }
+
+      }
       environment {
         variable = 'The running of ship/package has happened'
       }
       steps {
-
-       echo "${variable}"
+        echo "${variable}"
       }
     }
 
