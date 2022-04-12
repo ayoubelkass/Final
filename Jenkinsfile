@@ -27,16 +27,11 @@ pipeline {
 
     stage('pre-merge(PR checker)') {
       when {
-                branch 'PR-*'  
-            }
-
-            steps {
-            sh '''
-            echo "PULL REQUEST CHECK IS DONE HERE"
-            '''
-
-            }
-      
+        branch 'PR-*'
+      }
+      steps {
+        echo 'not again'
+      }
     }
 
     stage('Push Docker image to Docker registry') {
@@ -63,8 +58,6 @@ pipeline {
         echo "${variable}"
       }
     }
-
-    
 
   }
 }
