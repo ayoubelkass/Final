@@ -25,6 +25,12 @@ pipeline {
       }
     }
 
+    stage('Push Docker image to Docker registry') {
+      steps {
+        echo 'hello there ..!'
+      }
+    }
+
     stage('Check&Run') {
       when {
         expression {
@@ -40,11 +46,7 @@ pipeline {
       }
     }
 
-    stage('Push Docker image to Docker registry') {
-      steps {
-        echo 'hello there ..!'
-      }
-    }
+    
 
   }
 }
