@@ -26,8 +26,13 @@ pipeline {
     }
     
     stage('Push Docker image to Docker registry') {
+       when {
+          branch 'main'
+        }
+      
       steps {
-        echo 'hello there ..!'
+        sh '''cd Ship_Package 
+              ls'''
       }
     }
     
