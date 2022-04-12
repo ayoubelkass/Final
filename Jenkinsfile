@@ -34,7 +34,7 @@ pipeline {
       }
       
       steps {
-        sh '''cd Code 
+        sh '''cd Ship_Package 
               ls'''
       }
     }
