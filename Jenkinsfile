@@ -27,7 +27,12 @@ pipeline {
 
     stage('Push Docker image to Docker registry') {
       steps {
-        when{branch 'main'}
+        when {
+        expression {
+          branch 'main'
+        }
+
+      }
         echo 'hello there ..!'
       }
     }
