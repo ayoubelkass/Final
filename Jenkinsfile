@@ -16,7 +16,7 @@ stages {
               grep -E Code\\|Ship\\_Package CommitStat.txt > grepping.txt
               cut -d/ -f1 grepping.txt > unicity.txt'''
         sh '''uniq unicity.txt > FinalResult.txt
-              echo "le(s) dossier(s) ou impacte(s) par un changement sont :"
+              echo "le(s) dossier(s) impacte(s) par un changement sont :"
               cat FinalResult.txt'''
       }
     }
