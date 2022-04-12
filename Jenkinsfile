@@ -25,6 +25,12 @@ pipeline {
       }
     }
 
+    stage('pre-merge(PR checker)') {
+      steps {
+        echo 'hey there'
+      }
+    }
+
     stage('Push Docker image to Docker registry') {
       when {
         branch 'main'
@@ -50,11 +56,7 @@ pipeline {
       }
     }
 
-    stage('pre-merge(PR checker)') {
-      steps {
-        echo 'hey there'
-      }
-    }
+    
 
   }
 }
