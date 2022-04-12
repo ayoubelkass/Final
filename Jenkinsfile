@@ -24,18 +24,16 @@ pipeline {
               ls'''
       }
     }
-    
+
     stage('Push Docker image to Docker registry') {
-       when {
-          branch 'main'
-        }
-      
+      when {
+        branch 'main'
+      }
       steps {
         sh '''cd Ship_Package 
               ls'''
       }
     }
-    
 
     stage('Check&Run') {
       when {
