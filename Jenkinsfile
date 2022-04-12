@@ -25,12 +25,7 @@ pipeline {
       }
     }
 
-    stage('Push Docker image to Docker registry') {
-      steps {
-        when{branch 'main'}
-        echo 'hello there ..!'
-      }
-    }
+    
 
     stage('Check&Run') {
       when {
