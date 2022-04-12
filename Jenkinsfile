@@ -19,20 +19,9 @@ pipeline {
     }
 
     stage('Running Code') {
-      parallel {
-        stage('Running Code') {
-          steps {
-            sh '''cd Code 
+      steps {
+        sh '''cd Code 
               ls'''
-          }
-        }
-
-        stage('Push Docker image to Docker registry') {
-          steps {
-            echo 'Hello there .. !!'
-          }
-        }
-
       }
     }
 
@@ -48,6 +37,12 @@ pipeline {
       }
       steps {
         echo "${variable}"
+      }
+    }
+
+    stage('Push Docker image to Docker registry') {
+      steps {
+        echo 'hello there ..!'
       }
     }
 
