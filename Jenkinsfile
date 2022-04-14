@@ -40,6 +40,8 @@ pipeline {
         expression {
           return readFile('FinalResult.txt').contains('Ship')
         }
+        
+        branch 'main'
 
       }
       environment {
