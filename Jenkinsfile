@@ -37,11 +37,14 @@ pipeline {
 
     stage('Check&Run') {
       when {
+        
+        branch 'main'
+
         expression {
           return readFile('FinalResult.txt').contains('Ship')
         }
         
-        branch 'main'
+        
 
       }
       environment {
